@@ -1,5 +1,5 @@
-html, body, #nellie {
-  height: 100%;
+pad, #nellie header, #nellie #conversation, #nellie #new-message {
+  padding: 0 1em;
 }
 
 #nellie {
@@ -10,6 +10,7 @@ html, body, #nellie {
   display: flex;
   font-family: "Zilla Slab", serif;
   font-size: 14px;
+  height: 100%;
   line-height: 1.5;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -21,41 +22,27 @@ html, body, #nellie {
   font-family: "Bungee", sans-serif;
 }
 
-pad, header, #conversation, #new-message {
-  padding: 0 1em;
-}
-
-input {
-  background: none;
-  border: 0;
-  font-family: "Zilla Slab", serif;
-  line-height: 1.5;
-  padding: 1em;
-}
-
-i {
-  padding: 1em;
-}
-
-i:hover {
-  cursor: pointer;
-}
-
-header {
+#nellie header {
   background: #bccb2a;
+  border-radius: 1em 1em 0 0;
   -webkit-box-flex: 0;
   -ms-flex: 0 0 auto;
   flex: 0 0 auto;
 }
 
-header h1 {
+#nellie header h1 {
   font-size: 1.2em;
 }
 
-#conversation {
+#nellie header .material-icons {
+  font-size: .9em;
+  padding: 0;
+}
+
+#nellie #conversation {
   background: #fff;
-  border-left: 0;
-  border-right: 0;
+  border: 1px solid #e5e5e5;
+  border-top: 0;
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
@@ -70,13 +57,13 @@ header h1 {
   padding-bottom: 1em;
 }
 
-#conversation ul {
+#nellie #conversation ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-#conversation ul li {
+#nellie #conversation ul li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -87,15 +74,15 @@ header h1 {
   text-align: right;
 }
 
-#conversation ul li span {
+#nellie #conversation ul li span {
   background: #fff;
-  border: 1px solid #4c4c4c;
-  border-radius: 5px 5px 0 5px;
+  border: 1px solid #bfbfbf;
+  border-radius: 10px 10px 0 10px;
   margin-top: 1em;
   padding: 1em;
 }
 
-#conversation ul li.response {
+#nellie #conversation ul li.response {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -ms-flex-direction: row;
@@ -103,15 +90,14 @@ header h1 {
   text-align: left;
 }
 
-#conversation ul li.response span {
+#nellie #conversation ul li.response span {
   background: #bccb2a;
-  border-color: #4c4c4c;
-  border-radius: 5px 5px 5px 0;
+  border-radius: 10px 10px 10px 0;
 }
 
-#new-message {
+#nellie #new-message {
   background: #e5e5e5;
-  border-top: 1px solid #bfbfbf;
+  border-radius: 0 0 1em 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -124,18 +110,23 @@ header h1 {
   flex: 0 0 auto;
 }
 
-#new-message input {
+#nellie #new-message input {
+  background: none;
+  border: 0;
+  font-family: "Zilla Slab", serif;
+  line-height: 1.5;
+  padding: 1em 0;
   -webkit-box-flex: 2;
   -ms-flex: 2;
   flex: 2;
 }
 
-#new-message input:focus {
+#nellie #new-message input:focus {
   outline: 0;
 }
 
-#new-message .material-icons {
+#nellie #new-message .material-icons {
   color: #747E0E;
   font-size: 2em;
-  padding: .5em;
+  padding: .5em 0;
 }

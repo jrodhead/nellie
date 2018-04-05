@@ -20,35 +20,11 @@ $darkerGrey: #404040;
 $primary-font: 'Zilla Slab', serif;
 $secondary-font: 'Bungee', sans-serif;
 
-// breakpoints
-
-$S: 600px;
-$M: 800px;
-$L: 1000px;
-$XL: 1200px;
-
-// media queries
-
-@mixin MQ($canvas) {
-  @if $canvas == S {
-   @media only screen and (min-width: $S) { @content; }
-  }
-  @else if $canvas == M {
-   @media only screen and (min-width: $M) { @content; }
-  }
-  @else if $canvas == L {
-   @media only screen and (min-width: $L) { @content; }
-  }
-  @else if $canvas == XL {
-   @media only screen and (min-width: $XL) { @content; }
-  }
+pad {
+  padding: 0 1em;
 }
 
-//
-
-html, body, #nellie {
-  height: 100%;
-}
+// chat bot styles
 
 #nellie {
   background: $white;
@@ -58,6 +34,7 @@ html, body, #nellie {
   display: flex;
   font-family: $primary-font;
   font-size: 14px;
+  height: 100%;
   line-height: 1.5;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -66,118 +43,103 @@ html, body, #nellie {
   h1, h2, h3, h4, h5 {
     font-family: $secondary-font;
   }
-}
-
-pad {
-  padding: 0 1em;
-}
-
-input {
-  background: none;
-  border: 0;
-  font-family: $primary-font;
-  line-height: 1.5;
-  padding: 1em;
-}
-
-i {
-  padding: 1em;
-  &:hover {
-    cursor: pointer;
+  header {
+    @extend pad;
+    background: $nelnetGreen;
+    border-radius: 1em 1em 0 0;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    h1 {
+      font-size: 1.2em;
+    }
+    .material-icons {
+      font-size: .9em;
+      padding: 0;
+    }
   }
-}
-
-// header
-
-header {
-  @extend pad;
-  background: $nelnetGreen;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-  h1 {
-    font-size: 1.2em;
-  }
-}
-
-#conversation {
-  @extend pad;
-  background: $white;
-  border-left: 0;
-  border-right: 0;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
-  display:-webkit-box;
-  display:-ms-flexbox;
-  display:flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
-  overflow-y: auto;
-  padding-bottom: 1em;
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    li {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: reverse;
-          -ms-flex-direction: row-reverse;
-              flex-direction: row-reverse;
-      text-align: right;
-      span {
-        background: $white;
-        border: 1px solid $darkGrey;
-        border-radius: 5px 5px 0 5px;
-        margin-top: 1em;
-        padding: 1em;
-      }
-      &.response {
+  #conversation {
+    @extend pad;
+    background: $white;
+    border: 1px solid $lighterGrey;
+    border-top: 0;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+            flex: 1 1 auto;
+    display:-webkit-box;
+    display:-ms-flexbox;
+    display:flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    overflow-y: auto;
+    padding-bottom: 1em;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
         -webkit-box-orient: horizontal;
-        -webkit-box-direction: normal;
-            -ms-flex-direction: row;
-                flex-direction: row;
-        text-align: left;
+        -webkit-box-direction: reverse;
+            -ms-flex-direction: row-reverse;
+                flex-direction: row-reverse;
+        text-align: right;
         span {
-          background: $nelnetGreen;
-          border-color: $darkGrey;
-          border-radius: 5px 5px 5px 0;
+          background: $white;
+          border: 1px solid $lightGrey;
+          border-radius: 10px 10px 0 10px;
+          margin-top: 1em;
+          padding: 1em;
+        }
+        &.response {
+          -webkit-box-orient: horizontal;
+          -webkit-box-direction: normal;
+              -ms-flex-direction: row;
+                  flex-direction: row;
+          text-align: left;
+          span {
+            background: $nelnetGreen;
+            border-radius: 10px 10px 10px 0;
+          }
         }
       }
     }
   }
-}
-
-#new-message {
-  @extend pad;
-  background: $lighterGrey;
-  border-top: 1px solid $lightGrey;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
-  input {
-    -webkit-box-flex: 2;
-        -ms-flex: 2;
-            flex: 2;
-    &:focus {
-      outline: 0;
+  #new-message {
+    @extend pad;
+    background: $lighterGrey;
+    border-radius: 0 0 1em 1em;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+            flex: 0 0 auto;
+    input {
+      background: none;
+      border: 0;
+      font-family: $primary-font;
+      line-height: 1.5;
+      padding: 1em 0;
+      -webkit-box-flex: 2;
+          -ms-flex: 2;
+              flex: 2;
+      &:focus {
+        outline: 0;
+      }
     }
-  }
-  .material-icons {
-    color: $darkGreen;
-    font-size: 2em;
-    padding: .5em;
+    .material-icons {
+      color: $darkGreen;
+      font-size: 2em;
+      padding: .5em 0;
+    }
   }
 }
