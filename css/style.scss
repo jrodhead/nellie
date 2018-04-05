@@ -1,28 +1,21 @@
 // first-line-comment for scss autocompile
 
-/// Slightly lighten a color
-/// @access public
-/// @param {Color} $color - color to tint
-/// @param {Number} $percentage - percentage of `$color` in returned color
-/// @return {Color}
-@function lighten($color, $percentage) {
-  @return mix(white, $color, $percentage);
-}
+// colors
 
-/// Slightly darken a color
-/// @access public
-/// @param {Color} $color - color to shade
-/// @param {Number} $percentage - percentage of `$color` in returned color
-/// @return {Color}
-@function darken($color, $percentage) {
-  @return mix(black, $color, $percentage);
-}
+$red: #981810;
+$nelnetGreen: #bccb2a;
+$darkGreen: #747E0E;
+$blue: #418CD4;
 
-$color-1: #f5815f;
-$color-2: #75a580;
-$color-3: #907b60;
-$color-4: #455567;
-$color-5: #f2efe5;
+// whites/greys
+
+$white: #fff;
+$lighterGrey: #e5e5e5;
+$lightGrey: #bfbfbf;
+$darkGrey: #4c4c4c;
+$darkerGrey: #404040;
+
+//fonts
 
 $primary-font: 'Zilla Slab', serif;
 $secondary-font: 'Bungee', sans-serif;
@@ -52,39 +45,31 @@ $XL: 1200px;
 }
 
 //
-html {
-  background: $color-4;
-  color: $color-4;
-  font-size: 62.5%;
-  line-height: 1.5;
-}
 
-body {
-  background: lighten($color-5, 80%);
-	font-size: 1.6rem;
-	font-family: $primary-font;
-}
-
-html, body, #page {
+html, body, #nellie {
   height: 100%;
 }
 
-h1, h2, h3, h4, h5 {
-  font-family: $secondary-font;
-}
-
-#page {
+#nellie {
+  background: $white;
+  color: $darkerGrey;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  font-family: $primary-font;
+  font-size: 14px;
+  line-height: 1.5;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  h1, h2, h3, h4, h5 {
+    font-family: $secondary-font;
+  }
 }
 
 pad {
-  padding: 0 1rem;
+  padding: 0 1em;
 }
 
 input {
@@ -92,29 +77,11 @@ input {
   border: 0;
   font-family: $primary-font;
   line-height: 1.5;
-  padding: 1rem;
-}
-
-button {
-  background: $color-1;
-  border: 1px solid $color-5;
-  border-radius: 5rem;
-  -webkit-box-shadow: 0px 2px 2px rgba(0,0,0,.4);
-          box-shadow: 0px 2px 2px rgba(0,0,0,.4);
-  color: $color-5;
-  font-family: $secondary-font;
-  padding: 1.5rem;
-  &#shaft {
-    bottom: 2rem; right: 2rem;
-    position: fixed;
-  }
-  &:hover {
-    cursor: pointer;
-  }
+  padding: 1em;
 }
 
 i {
-  padding: 1rem;
+  padding: 1em;
   &:hover {
     cursor: pointer;
   }
@@ -124,51 +91,32 @@ i {
 
 header {
   @extend pad;
-  background: $color-2;
-  color: lighten($color-5, 60%);
+  background: $nelnetGreen;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
-  text-align: center;
   h1 {
     font-size: 1.2em;
-    @include MQ(M) {
-      font-size: 2em;
-    }
-  }
-  a, a:hover, a:visited {
-    color: $color-5;
-    text-decoration:none;
-	}
-  a.active {
-    color: $color-3;
-		.logo {
-			.text {
-				color: $color-5;
-			}
-		}
-  }
-  div {
-    display:-webkit-box;
-    display:-ms-flexbox;
-    display:flex;
-    -webkit-box-pack:justify;
-        -ms-flex-pack:justify;
-            justify-content:space-between;
   }
 }
 
 #conversation {
   @extend pad;
+  background: $white;
   border-left: 0;
   border-right: 0;
   -webkit-box-flex: 1;
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
+  display:-webkit-box;
+  display:-ms-flexbox;
+  display:flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
   overflow-y: auto;
-  @include MQ(M) {
-    padding-bottom: 0;
-  }
+  padding-bottom: 1em;
   ul {
     list-style: none;
     margin: 0;
@@ -177,18 +125,28 @@ header {
       display: -webkit-box;
       display: -ms-flexbox;
       display: flex;
-      max-width: 75%;
-      .name {
-        background: $color-2;
-        border: 1px solid $color-5;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: reverse;
+          -ms-flex-direction: row-reverse;
+              flex-direction: row-reverse;
+      text-align: right;
+      span {
+        background: $white;
+        border: 1px solid $darkGrey;
         border-radius: 5px 5px 0 5px;
-        color: $color-5;
-        margin-top: 1rem;
-        padding: 1.5rem;
+        margin-top: 1em;
+        padding: 1em;
       }
-      .remove {
-        i {
-          padding: 1.5rem 0;
+      &.response {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        text-align: left;
+        span {
+          background: $nelnetGreen;
+          border-color: $darkGrey;
+          border-radius: 5px 5px 5px 0;
         }
       }
     }
@@ -197,8 +155,8 @@ header {
 
 #new-message {
   @extend pad;
-  background: lighten($color-5, 60%);
-  border-top: 1px solid $color-2;
+  background: $lighterGrey;
+  border-top: 1px solid $lightGrey;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -209,9 +167,6 @@ header {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
           flex: 0 0 auto;
-  min-height: 4.4rem;
-  padding: 1rem;
-  width: auto;
   input {
     -webkit-box-flex: 2;
         -ms-flex: 2;
@@ -221,6 +176,8 @@ header {
     }
   }
   .material-icons {
-    color: $color-2;
+    color: $darkGreen;
+    font-size: 2em;
+    padding: .5em;
   }
 }

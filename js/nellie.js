@@ -36,7 +36,7 @@ function sendMessage() { //get send-message input value and add to conversation 
 function showOptions() { //display a list of items in the conversation array
   var optionList = '<ul>';
   for (let listItem of conversation) {
-    optionList += '<li><span class="name">' + listItem.name + '</span></li>'; // new
+    optionList += '<li><span>' + listItem.name + '</span></li>'; // new
   };
   optionList += '</ul>';
   document.getElementById('conversation').innerHTML = optionList;
