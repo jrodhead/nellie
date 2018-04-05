@@ -16,6 +16,7 @@ pad, #nellie header, #nellie #conversation, #nellie #new-message {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
+  padding: 20px;
 }
 
 #nellie h1, #nellie h2, #nellie h3, #nellie h4, #nellie h5 {
