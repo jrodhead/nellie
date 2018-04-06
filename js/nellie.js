@@ -1,52 +1,36 @@
 var conversation = []; // array that will store all added messages
 
 function resetMessage() { //reset send-message for faster input
-  var blank = document.getElementById('send-message');
-  blank.value = '';
-}
-
-function errBox(errText, errPar) { //error display -- ADD TO CONVERSATION
-  var errBox = document.createElement('div');
-  errBox.className = 'error';
-  errBox.innerHTML = '<p>' + errText + '</p>';
-  var refChild = errPar.firstChild;
-  errPar.insertBefore(errBox, refChild);
-}
-
-function attention(elem, className) { //add a class then remove it after a set time
-  $(elem).addClass(className);
-  setTimeout(function() {$(elem).removeClass(className)}, 500);
+  var blank = document.getElementById("send-message");
+  blank.value = "";
 }
 
 function sendMessage() { //get send-message input value and add to conversation array
-  var message = document.getElementById('send-message');
-  var convElem = document.getElementById('conversation');
-  var errPar = document.getElementById('conversation');
-  if (message.value==='') {
-    attention(document.getElementById('new-message'), 'error');
-    errBox('Whoops! Please type something into the input box.', errPar);
+  var message = document.getElementById("send-message");
+  var convElem = document.getElementById("conversation");
+  if (message.value==="") {
+    // do nothing when submitting empty input value
   } else {
-    conversation.push({'id':message.value,'type':'manual','name':message.value});
-    showOptions();
-    var convElem = document.getElementById('conversation');
-    convElem.scrollIntoView(false);
+    conversation.push({"question":message.value});
+    showConversation();
+    convElem.scrollTop = convElem.scrollHeight;
   }
-};
+}
 
-function showOptions() { //display a list of items in the conversation array
-  var optionList = '<ul>';
+function showConversation() { //display a list of items in the conversation array
+  var optionList = "<ul>";
   for (let listItem of conversation) {
-    optionList += '<li><span>' + listItem.name + '</span></li>'; // new
+    optionList += "<li><span>" + listItem.question + "</span></li>"; // new
   };
-  optionList += '</ul>';
-  document.getElementById('conversation').innerHTML = optionList;
+  optionList += "</ul>";
+  document.getElementById("conversation").innerHTML = optionList;
   resetMessage();
 }
 
-$("#send-message").on('keyup', function (enter) {
+$("#send-message").on("keyup", function (enter) {
   if (enter.keyCode == 13) {
     sendMessage();
   }
 });
 
-document.getElementById('send').addEventListener('click', sendMessage);
+document.getElementById("send").addEventListener("click", sendMessage);

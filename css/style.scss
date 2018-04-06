@@ -3,9 +3,9 @@
 // colors
 
 $red: #981810;
-$nelnetGreen: #bccb2a;
+$nelnetGreen: #8dce19;
 $darkGreen: #747E0E;
-$blue: #418CD4;
+$blue: #1f496b;
 
 // whites/greys
 
@@ -138,8 +138,10 @@ pad {
       }
     }
     .material-icons {
-      color: $darkGreen;
-      font-size: 2em;
+      color: $blue;
+      cursor: pointer;
+      font-size: 1.5em;
+      line-height: 1.5;
       padding: .5em 0;
     }
   }
