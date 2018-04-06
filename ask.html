@@ -9,28 +9,21 @@
 	<title>Nellie</title>
 </head>
 
-<body>
+<div id="nellie">
+	<header role="banner">
+		<h1>askNellieBot <i class="material-icons" id="chat">chat</i></h1>
+	</header>
 
-	<div id="nellie">
-		<header role="banner">
-			<!-- <img src="images/logo.png" alt="Nellie logo" /> -->
-			<h1>askNellie <i class="material-icons" id="chat">chat</i></h1>
-		</header>
+  <div id="conversation">
+		<ul>
+		</ul>
+  </div>
 
-	  <div id="conversation">
-			<ul>
-				<li class="post"><span>user input</span></li>
-				<li class="response"><span>bot response</span></li>
-			</ul>
-	  </div>
-
-		<div id="new-message">
-			<input autofocus="autofocus" id="send-message" type="text" placeholder="What can I help you with?">
-			<i class="material-icons" id="send">send</i>
-		</div>
+	<div id="new-message">
+		<input autofocus="autofocus" id="send-message" type="text" placeholder="What can I help you with?">
+		<i class="material-icons" id="send">send</i>
 	</div>
 </div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="js/nellie.js"></script>
 
-</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="js/nellie.js"></script>

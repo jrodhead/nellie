@@ -1,5 +1,3 @@
-var conversation = []; // array that will store all added messages
-
 function resetMessage() { //reset send-message for faster input
   var blank = document.getElementById("send-message");
   blank.value = "";
@@ -7,26 +5,49 @@ function resetMessage() { //reset send-message for faster input
 
 function sendMessage() { //get send-message input value and add to conversation array
   var message = document.getElementById("send-message");
-  var convElem = document.getElementById("conversation");
-  if (message.value==="") {
-    // do nothing when submitting empty input value
+  // api hooks
+  var baseUri = 'https://westus.api.cognitive.microsoft.com/qnamaker/v2.0';
+  var knowledgebasesID = '41b69735-86d8-411e-8004-ced4d6903919';
+  var uri = baseUri + '/knowledgebases/' + knowledgebasesID + '/generateAnswer';
+  if (message.value==="") { //handle empty input value
+    $("#conversation ul").append("<li class='response'><span>Whoops! Please type something into the input box to ask me a question.</span></li>");
   } else {
-    conversation.push({"question":message.value});
-    showConversation();
-    convElem.scrollTop = convElem.scrollHeight;
-    setTimeout(function() {$('li#new').removeAttr('id','new')}, 500);
+    messageType = 'question';
+    var question = { "question": message.value };
+    var result = postAsk(uri, question);
+
+    // console.log('result - ' + JSON.stringify(answers));
+    $("#conversation ul").append("<li class='post'><span>" + message.value + "</span></li>");
+    var convElem = document.getElementById('conversation');
+    resetMessage();
   }
 }
 
-function showConversation() { //display a list of items in the conversation array
-  var optionList = "<ul>";
-  for (let listItem of conversation) {
-    optionList += "<li id='new'><span>" + listItem.question + "</span></li>"; // new
-  };
-  optionList += "</ul>";
-  document.getElementById("conversation").innerHTML = optionList;
-  resetMessage();
+function postAsk(uri, question) {
+  console.log('Starting Post')
+  var response;
+  return fetch(uri, {
+    method: 'POST',
+    headers: {
+        'Ocp-Apim-Subscription-Key': 'd5cc86b877b14b9f923667c7d45a633b',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(question)
+  })
+  .then(response =>
+    response.json().then(data => ({
+      data: data,
+      status: response.status
+    })
+    ).then(res => {
+      var answers = res.data;
+      console.log(res.status, JSON.stringify(answers));
+      messageType = 'answer';
+      $("#conversation ul").append("<li class='response'><span>" + res.data.answers[0].answer + "</span></li>");
+    })
+  );
 }
+
 
 $("#send-message").on("keyup", function (enter) {
   if (enter.keyCode == 13) {
