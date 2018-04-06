@@ -2,8 +2,16 @@ pad, #nellie header, #nellie #conversation, #nellie #new-message {
   padding: 0 1em;
 }
 
+body {
+  font-family: "Zilla Slab", serif;
+}
+
+h1 {
+  font-family: "Bungee", sans-serif;
+}
+
 #nellie {
-  background: #fff;
+  background: transparent;
   color: #404040;
   display: -webkit-box;
   display: -ms-flexbox;

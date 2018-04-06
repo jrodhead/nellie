@@ -24,10 +24,18 @@ pad {
   padding: 0 1em;
 }
 
+body {
+  font-family: $primary-font;
+}
+
+h1 {
+  font-family: $secondary-font;
+}
+
 // chat bot styles
 
 #nellie {
-  background: $white;
+  background: transparent;
   color: $darkerGrey;
   display: -webkit-box;
   display: -ms-flexbox;
