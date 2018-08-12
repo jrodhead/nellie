@@ -24,6 +24,10 @@ pad {
   padding: 0 1em;
 }
 
+nellie {
+  background: $nelnetGreen;
+}
+
 body {
   font-family: $primary-font;
 }
@@ -34,122 +38,181 @@ h1 {
 
 // chat bot styles
 
-#nellie {
-  background: transparent;
-  color: $darkerGrey;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-family: $primary-font;
-  font-size: 14px;
-  height: 100%;
-  line-height: 1.5;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  padding:20px;
-  h1, h2, h3, h4, h5 {
-    font-family: $secondary-font;
-  }
-  #header {
-    @extend pad;
-    background: $nelnetGreen;
-    border-radius: 1em 1em 0 0;
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 auto;
-            flex: 0 0 auto;
-    h1 {
-      font-size: 1.2em;
-    }
-    .material-icons {
-      font-size: .9em;
-      padding: 0;
-    }
-  }
-  #conversation {
-    @extend pad;
-    background: $white;
-    border: 1px solid $lighterGrey;
-    -webkit-box-flex: 1;
-        -ms-flex: 1 1 auto;
-            flex: 1 1 auto;
-    display:-webkit-box;
-    display:-ms-flexbox;
-    display:flex;
+#nellieContainer {
+  bottom: 0;
+  padding: 1em;
+  position: fixed;
+  right: 0;
+  #nellie {
+    background: transparent;
+    color: $darkerGrey;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-orient: vertical;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: column-reverse;
-            flex-direction: column-reverse;
-    overflow-y: auto;
-    padding-bottom: 1em;
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      li {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: horizontal;
-        -webkit-box-direction: reverse;
-            -ms-flex-direction: row-reverse;
-                flex-direction: row-reverse;
-        text-align: right;
-        span {
-          background: $white;
-          border: 1px solid $lightGrey;
-          border-radius: 10px 10px 0 10px;
-          margin-top: 1em;
-          padding: 1em;
-        }
-        &.response {
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    font-family: $primary-font;
+    font-size: 14px;
+    height: 0;
+    line-height: 1.5;
+    overflow: hidden;
+    -webkit-transform: translateX(500px);
+            transform: translateX(500px);
+    -webkit-transition: -webkit-transform .3s ease-in;
+    transition: -webkit-transform .3s ease-in;
+    transition: transform .3s ease-in;
+    transition: transform .3s ease-in, -webkit-transform .3s ease-in;
+    width: 0;
+    h1, h2, h3, h4, h5 {
+      font-family: $secondary-font;
+    }
+    #header {
+      @extend pad;
+      background: $nelnetGreen;
+      border-radius: 1em 1em 0 0;
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 auto;
+              flex: 0 0 auto;
+      h1 {
+        font-size: 1.2em;
+      }
+      .material-icons {
+        font-size: .9em;
+        padding: 0;
+      }
+    }
+    #conversation {
+      @extend pad;
+      background: $white;
+      border: 1px solid $lighterGrey;
+      -webkit-box-flex: 1;
+          -ms-flex: 1 1 auto;
+              flex: 1 1 auto;
+      display:-webkit-box;
+      display:-ms-flexbox;
+      display:flex;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: reverse;
+          -ms-flex-direction: column-reverse;
+              flex-direction: column-reverse;
+      overflow-y: auto;
+      padding-bottom: 1em;
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
           -webkit-box-orient: horizontal;
-          -webkit-box-direction: normal;
-              -ms-flex-direction: row;
-                  flex-direction: row;
-          text-align: left;
+          -webkit-box-direction: reverse;
+              -ms-flex-direction: row-reverse;
+                  flex-direction: row-reverse;
+          text-align: right;
           span {
-            background: $nelnetGreen;
-            border-radius: 10px 10px 10px 0;
+            background: $white;
+            border: 1px solid $lightGrey;
+            border-radius: 10px 10px 0 10px;
+            margin-top: 1em;
+            padding: 1em;
+          }
+          &.response {
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+                -ms-flex-direction: row;
+                    flex-direction: row;
+            text-align: left;
+            span {
+              @extend nellie;
+              border-radius: 10px 10px 10px 0;
+            }
           }
         }
       }
     }
+    #new-message {
+      @extend pad;
+      background: $lighterGrey;
+      border-radius: 0 0 1em 1em;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-orient: horizontal;
+      -webkit-box-direction: normal;
+          -ms-flex-direction: row;
+              flex-direction: row;
+      -webkit-box-flex: 0;
+          -ms-flex: 0 0 auto;
+              flex: 0 0 auto;
+      input {
+        background: none;
+        border: 0;
+        font-family: $primary-font;
+        line-height: 1.5;
+        padding: 1em 0;
+        -webkit-box-flex: 2;
+            -ms-flex: 2;
+                flex: 2;
+        &:focus {
+          outline: 0;
+        }
+      }
+      .material-icons {
+        color: $blue;
+        cursor: pointer;
+        font-size: 1.5em;
+        line-height: 1.5;
+        padding: .5em 0;
+      }
+    }
   }
-  #new-message {
-    @extend pad;
-    background: $lighterGrey;
-    border-radius: 0 0 1em 1em;
+
+  .toggle {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -webkit-box-flex: 0;
-        -ms-flex: 0 0 auto;
-            flex: 0 0 auto;
-    input {
-      background: none;
-      border: 0;
-      font-family: $primary-font;
-      line-height: 1.5;
-      padding: 1em 0;
-      -webkit-box-flex: 2;
-          -ms-flex: 2;
-              flex: 2;
-      &:focus {
-        outline: 0;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
+    padding-top: 0;
+    i {
+      @extend nellie;
+      border-radius: 50%;
+      -webkit-box-shadow: 0 0 10px $lightGrey;
+              box-shadow: 0 0 10px $lightGrey;
+      cursor: pointer;
+      padding: 1rem;
+      text-align: center;
+      width: -webkit-fit-content;
+      width: -moz-fit-content;
+      width: fit-content;
+      &#close {
+        display: none;
+      }
+      &#chat {
+        display: block;
       }
     }
-    .material-icons {
-      color: $blue;
-      cursor: pointer;
-      font-size: 1.5em;
-      line-height: 1.5;
-      padding: .5em 0;
+  }
+  &.on {
+    #nellie {
+      height: 500px;
+      width: 300px;
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    .toggle {
+      padding-top: 1em;
+      i#close {
+        display: block;
+      }
+      i#chat {
+        display: none;
+      }
     }
   }
 }

@@ -3,46 +3,40 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name = "format-detection" content = "telephone=no">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Julius+Sans+One|Bungee|Zilla+Slab|Material+Icons'>
+	<link rel='stylesheet prefetch' href='css/style.min.css' />
 	<title>Nellie</title>
-	<style>
-		body {
-			background: #fff;
-		}
-		header h1 {
-			background: #8dce19;
-			margin: 0;
-			padding: 1em;
-			text-align: center;
-		}
-		.promo {
-			text-align: center;
-		}
-	</style>
 </head>
 
-<body>
-	<header>
-		<h1>askNellieBot</h1>
-	</header>
+<div id="nellieContainer" class="on">
 
-	<div class="promo">
-		<p>
-			Do you have questions about student loans?
-		</p>
-		<p>
-			Are you having a tough time reading through long documents trying to find answers?
-		</p>
-		<p>
-			Then try...
-		</p>
-		<h2>askNellie.net</h2>
-		<p>
-			Nellie is the Nelnet digital assitant.<br />Ask her a question and she can provide an answer!
-		</p>
-	</div>
+  <div id="nellie">
+  	<div id="header">
+  		<h1>askNellieBot <i class="material-icons" id="chat">chat</i></h1>
+  	</div>
 
-	<div style="height:440px;margin:0 auto;width:340px;">
-		<!-- insert chatbot container here -->
-	</div>
+    <div id="conversation">
+  		<ul>
+<!--
+        <li class="question"><span>hi</span></li>
+        <li class="response"><span>hey!</span></li>
+-->
+  		</ul>
+    </div>
 
-</body>
+  	<div id="new-message">
+  		<input autofocus="autofocus" id="send-message" type="text" placeholder="What can I help you with?">
+  		<i class="material-icons" id="send">send</i>
+  	</div>
+  </div>
+
+  <div class="toggle">
+    <i class="material-icons" id="chat">chat</i>
+    <i class="material-icons" id="close">close</i>
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="js/nellie.js"></script>
